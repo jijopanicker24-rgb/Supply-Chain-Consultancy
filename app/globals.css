@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-navy-50: #eef2f8;
+  --color-navy-100: #d5deec;
+  --color-navy-700: #1b2f55;
+  --color-navy-800: #12234a;
+  --color-navy-900: #0b1a3a;
+  --color-navy-950: #071029;
+}
+
+/* Defaults live in the base layer so utility classes (e.g. text-white on a hero heading) can override them. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-700 antialiased dark:bg-navy-950 dark:text-slate-300;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading text-navy-900 dark:text-white;
+  }
+}
